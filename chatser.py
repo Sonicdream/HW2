@@ -55,11 +55,14 @@ def tellOthers(exceptNum, whatToSay):
   
 def subThreadIn(myconnection, connNumber):
 
+
     NewMan = 1  
     nickname = myconnection.recv(1024).decode() #receive nickname add
     name = nickname[0:4]
     secret = nickname[5:]
     print(name)
+
+
     
     for i in range(0, len(defaultMan), +1):
        # if name == [defaultMan[i]][1:] and [defaultMan[i]][0] == '@':
@@ -86,8 +89,12 @@ def subThreadIn(myconnection, connNumber):
         NewPass[name] = secret
         print(secret)
                 
+    print("below is registered man")
+    print("========================")
+    for i in range(0, len(defaultMan), +1):
+         print(defaultMan[i])
 
-         
+    print("========================")         
       
    # print(myconnection) ###    
 
@@ -100,8 +107,12 @@ def subThreadIn(myconnection, connNumber):
     nameToaddress[name] = myconnection
    
     print(555) 
- #   nameToaddress[nickname] = myconnection  ##### name To address dict
 
+    #broadcast who  go online
+    tellOthers(connNumber, name + " is going up")    
+
+ #   nameToaddress[nickname] = myconnection  ##### name To address dict
+   
 
 
     for i in range(0, len(stalist), +1):
